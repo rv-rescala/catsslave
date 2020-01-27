@@ -1,7 +1,5 @@
 import argparse
 import logging
-from tabelogrobot.site.japan_ranking import JapanRankingSite
-from tabelogrobot.site.detail import DetailSite
 from catscore.http.request import CatsRequest
 from catscore.lib.time import get_today_date
 import json

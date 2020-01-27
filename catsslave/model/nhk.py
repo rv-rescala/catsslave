@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 from typing import List
 from catscore.lib.time import get_today_date
+from pyspark.sql import SparkSession, DataFrame
+from catscore.db.mysql import MySQLConf, MySQLSpark
 
 @dataclass(frozen=True)
 class NHKProgram:
@@ -54,8 +56,6 @@ class NHKProgramTable:
                 genres=",".join(j["genres"]),
                 update_date=get_today_date())
         return list(map(lambda j: _parse(j), response_json["list"]["g1"]))
-    
-        @classmethod
     
     @classmethod
     def to_db(cls, spark:SparkSession, df:DataFrame, mysql_conf:MySQLConf):
